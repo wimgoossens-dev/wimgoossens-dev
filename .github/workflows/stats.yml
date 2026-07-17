@@ -5,9 +5,6 @@ on:
     - cron: "0 0 * * *"
   workflow_dispatch:
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
-
 permissions:
   contents: write
 
@@ -15,13 +12,9 @@ jobs:
   update-stats:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4.2.2
-
-      - name: Generate Top Languages Card
-        uses: stats-organization/github-readme-stats-action@v2
+      - uses: actions/checkout@v4
+      - uses: StefVuck/Github-Language-Stats@v1.2.0
         with:
-          token: ${{ secrets.STATS_TOKEN }}
-          card: "top-langs"
-          options: "layout=donut&theme=dark"
-          path: "stats/languages.svg"
+          github_token: ${{ secrets.STATS_TOKEN }}
+          visualization_types: "leaderboard pie"
+          output_path: "stats"
