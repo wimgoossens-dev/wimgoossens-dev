@@ -1,2 +1,7 @@
-### Hi there 👋
-![My Language Pie Chart](stats/pie_by_weighted.png)
+### Hello 👋
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="stats/pie_by_weighted_dark.png" width="350">
+  <source media="(prefers-color-scheme: light)" srcset="stats/pie_by_weighted.png" width="350">
+  <img src="stats/pie_by_weighted.png" width="350" alt="My Language Pie Chart">
+</picture>
