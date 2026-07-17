@@ -22,12 +22,20 @@ jobs:
           visualization_types: "pie"
           output_path: "stats"
           dark_mode: "true"
-          custom_colors: '{"Mojo": "#bc52ee", "Astro": "#ff5d01"}'
 
       - name: Fix Docker Root Permissions Bug
         run: |
           sudo chown -R $USER:$USER .git
           sudo chmod -R 777 .git
+
+      # THIS STEP FINALLY OVERRIDES THE GREY SLICES
+      - name: Swap Grey Slices to Mojo Orange and Astro Purple
+        run: |
+          if [ -d "stats" ]; then
+            # Find the generated data files and swap the placeholder grey with your exact colors
+            sed -i 's/"#cccccc"/"#ff5d01"/g' stats/* 2>/dev/null || true
+            sed -i 's/"#bbbbbb"/"#bc52ee"/g' stats/* 2>/dev/null || true
+          fi
 
       - name: Commit and push generated images
         run: |
@@ -36,4 +44,3 @@ jobs:
           git add stats/
           git commit -m "Update language statistics cake diagram" || exit 0
           git push
-
