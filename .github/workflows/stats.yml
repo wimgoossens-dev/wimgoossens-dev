@@ -16,5 +16,5 @@ jobs:
       - uses: StefVuck/Github-Language-Stats@v1.2.0
         with:
           github_token: ${{ secrets.STATS_TOKEN }}
-          visualization_types: "leaderboard"
+          visualization_types: "leaderboard pie"
           output_path: "stats"
