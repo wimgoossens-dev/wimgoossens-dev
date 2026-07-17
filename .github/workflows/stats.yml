@@ -15,33 +15,28 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Compile Profile Metrics File
-        uses: lowlighter/metrics@latest
+      - name: Run language metrics tool
+        uses: StefVuck/Github-Language-Stats@v1.2.0
         with:
-          token: ${{ secrets.STATS_TOKEN }}
-          filename: stats/pie_by_weighted.svg
-          base: ""
-          theme: github_dark
-          plugin_languages: yes
-          plugin_languages_sections: most-used
-          plugin_languages_details: bytes-size, percentage
+          github_token: ${{ secrets.STATS_TOKEN }}
+          visualization_types: "pie"
+          output_path: "stats"
+          dark_mode: "true"
 
       - name: Fix Docker Root Permissions Bug
         run: |
           sudo chown -R $USER:$USER .git
           sudo chmod -R 777 .git
 
-      # THIS FORCE-PAINTS THE VECTOR GRAPH DIRECTLY 
+      # THIS FORCES THE TERM SYSTEM TO SWAP OUT THE GREY SHADES NATIVELY
       - name: Hardcode Mojo Orange and Astro Purple
         run: |
-          if [ -f "stats/pie_by_weighted.svg" ]; then
-            # Locates the text metadata blocks inside the file and forces your hex overrides
-            sed -i 's/Mojo<\/tspan>/Mojo<\/tspan><tspan fill="#ff5d01">/g' stats/pie_by_weighted.svg || true
-            sed -i 's/Astro<\/tspan>/Astro<\/tspan><tspan fill="#bc52ee">/g' stats/pie_by_weighted.svg || true
-            
-            # Replaces the generic fallback dot colors for the legend layout
-            sed -i 's/match for Mojo color/fill="#ff5d01"/g' stats/pie_by_weighted.svg || true
-            sed -i 's/match for Astro color/fill="#bc52ee"/g' stats/pie_by_weighted.svg || true
+          if [ -d "stats" ]; then
+            # Search through the tool's generated files and replace fallback greys with your colors
+            sed -i 's/#cccccc/#ff5d01/g' stats/* 2>/dev/null || true
+            sed -i 's/#b0b0b0/#bc52ee/g' stats/* 2>/dev/null || true
+            sed -i 's/#bbbbbb/#bc52ee/g' stats/* 2>/dev/null || true
+            sed -i 's/gray/#ff5d01/g' stats/* 2>/dev/null || true
           fi
 
       - name: Commit and push generated images
