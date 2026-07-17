@@ -22,6 +22,7 @@ jobs:
           visualization_types: "pie"
           output_path: "stats"
           dark_mode: "true"
+          custom_colors: '{"Mojo": "#bc52ee", "Astro": "#ff5d01"}'
 
       - name: Fix Docker Root Permissions Bug
         run: |
@@ -35,3 +36,4 @@ jobs:
           git add stats/
           git commit -m "Update language statistics cake diagram" || exit 0
           git push
+
