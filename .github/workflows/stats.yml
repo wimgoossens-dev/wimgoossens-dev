@@ -12,9 +12,13 @@ jobs:
   update-stats:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: jstrieb/github-stats-extended@v1
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate Top Languages Card
+        uses: stats-organization/github-readme-stats-action@v2
         with:
-          github_token: ${{ secrets.STATS_TOKEN }}
-          visualization_types: "leaderboard pie"
-          output_path: "stats"
+          token: ${{ secrets.STATS_TOKEN }}
+          card: "top-langs"
+          options: "layout=donut&theme=dark"
+          path: "stats/languages.svg"
