@@ -3,7 +3,7 @@
   
   <h3>Hello 👋</h3>
   <p>
-  Welcome! Take a look around. Everything here is released under the MIT license, so feel free to copy anything you like. On the right, you'll find a pie chart of my most-used programming languages and an overview of my technical stack.
+  Welcome and take a look around. Everything here is released under the MIT license, so feel free to copy anything you like. On the right, you'll find a pie chart of my most-used programming languages and an overview of my technical stack.
     
   If you are looking to collaborate, my specialization lies in bridging the gap between business and development. I help SaaS founders translate what customers want into what they actually need, seamlessly relaying those requirements to the engineering team.
   
