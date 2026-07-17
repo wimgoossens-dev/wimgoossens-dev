@@ -23,6 +23,12 @@ jobs:
           output_path: "stats"
           dark_mode: "true"
 
+      # ---> INSERTED HERE TO UNLOCK THE REPOSITORY FILES <---
+      - name: Fix Docker Root Permissions Bug
+        run: |
+          sudo chown -R $USER:$USER .git
+          sudo chmod -R 777 .git
+
       - name: Commit and push generated images
         run: |
           git config --global user.name "github-actions[bot]"
