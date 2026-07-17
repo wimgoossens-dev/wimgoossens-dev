@@ -1,7 +1,7 @@
 <div>
   <img src="stats/pie_by_weighted.png" width="480" align="right" style="margin-left: 20px;" alt="My Language Pie Chart" />
   
-  <h3>Hi there 👋</h3>
+  <h3>Hello 👋</h3>
   <p>
   Welcome! Take a look around. Everything here is released under the MIT license, so feel free to copy anything you like. On the right, you'll find a pie chart of my most-used programming languages and an overview of my technical stack.
     
