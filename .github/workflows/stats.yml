@@ -19,6 +19,7 @@ jobs:
         uses: stats-organization/github-readme-stats-action@v2
         with:
           token: ${{ secrets.STATS_TOKEN }}
+          username: "wimgoossens-dev"
           card: "top-langs"
           options: "layout=donut&theme=dark"
           path: "stats/languages.svg"
