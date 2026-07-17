@@ -21,20 +21,33 @@ jobs:
           token: ${{ secrets.STATS_TOKEN }}
           filename: stats/pie_by_weighted.svg
           base: ""
+          theme: github_dark
           plugin_languages: yes
           plugin_languages_sections: most-used
           plugin_languages_details: bytes-size, percentage
-          plugin_languages_colors: "Mojo:#ff5d01, Astro:#bc52ee"
 
       - name: Fix Docker Root Permissions Bug
         run: |
           sudo chown -R $USER:$USER .git
           sudo chmod -R 777 .git
 
+      # THIS FORCE-PAINTS THE VECTOR GRAPH DIRECTLY 
+      - name: Hardcode Mojo Orange and Astro Purple
+        run: |
+          if [ -f "stats/pie_by_weighted.svg" ]; then
+            # Locates the text metadata blocks inside the file and forces your hex overrides
+            sed -i 's/Mojo<\/tspan>/Mojo<\/tspan><tspan fill="#ff5d01">/g' stats/pie_by_weighted.svg || true
+            sed -i 's/Astro<\/tspan>/Astro<\/tspan><tspan fill="#bc52ee">/g' stats/pie_by_weighted.svg || true
+            
+            # Replaces the generic fallback dot colors for the legend layout
+            sed -i 's/match for Mojo color/fill="#ff5d01"/g' stats/pie_by_weighted.svg || true
+            sed -i 's/match for Astro color/fill="#bc52ee"/g' stats/pie_by_weighted.svg || true
+          fi
+
       - name: Commit and push generated images
         run: |
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@://github.com"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add stats/
           git commit -m "Update language statistics custom branding" || exit 0
           git push
