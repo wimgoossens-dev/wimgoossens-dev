@@ -12,10 +12,21 @@ jobs:
   update-stats:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: StefVuck/Github-Language-Stats@v1.2.0
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run language metrics tool
+        uses: StefVuck/Github-Language-Stats@v1.2.0
         with:
           github_token: ${{ secrets.STATS_TOKEN }}
-          visualization_types: "leaderboard pie"
+          visualization_types: "pie"
           output_path: "stats"
-          dark_theme: "true"
+          dark_mode: "true"
+
+      - name: Commit and push generated images
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add stats/
+          git commit -m "Update language statistics cake diagram" || exit 0
+          git push
