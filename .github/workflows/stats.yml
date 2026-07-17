@@ -16,13 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
 
       - name: Generate Top Languages Card
         uses: stats-organization/github-readme-stats-action@v2
         with:
           token: ${{ secrets.STATS_TOKEN }}
-          username: "wimgoossens-dev"
           card: "top-langs"
           options: "layout=donut&theme=dark"
           path: "stats/languages.svg"
