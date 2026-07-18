@@ -22,7 +22,7 @@ jobs:
           visualization_types: "pie"
           output_path: "stats"
           dark_mode: "true"
-          color_overrides: '{"Astro": "#BC52EE", "Mojo": "#FF5D01"}'
+          exclude_languages: "Astro"
       
       - name: Fix Docker Root Permissions Bug
         run: |
