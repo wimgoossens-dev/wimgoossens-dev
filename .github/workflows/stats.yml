@@ -22,7 +22,8 @@ jobs:
           visualization_types: "pie"
           output_path: "stats"
           dark_mode: "true"
-
+          color_overrides: '{"Astro": "#BC52EE", "Mojo": "#FF5D01"}'
+      
       - name: Fix Docker Root Permissions Bug
         run: |
           sudo chown -R $USER:$USER .git
