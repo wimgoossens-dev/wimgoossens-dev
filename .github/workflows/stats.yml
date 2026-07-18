@@ -15,25 +15,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Compile Profile Metrics File
-        uses: lowlighter/metrics@latest
+      - name: Run language metrics tool
+        uses: StefVuck/Github-Language-Stats@v1.2.0
         with:
-          token: ${{ secrets.STATS_TOKEN }}
-          filename: stats/pie_by_weighted.svg
-          
-          # RE-ENABLE THE BASE ENGINE TO ACTIVATE DESIGN WRAPPERS
-          base: header
-          theme: github_dark
-          
-          # FORCES THE SYSTEM TO FORCE-OUTPUT A REAL CIRCULAR DIAGRAM
-          plugin_languages: yes
-          plugin_languages_chart_type: donut
-          plugin_languages_sections: most-used
-          plugin_languages_details: percentage, pie-chart
-          
-          # APPLIES YOUR SPECIFIC DESIGNED COLOR SCHEME NATIVELY
-          plugin_languages_colors: "Mojo:#ff5d01, Astro:#bc52ee, Python:#3776ab, JavaScript:#f7df1e, MDX:#fcb32c"
-          plugin_languages_ignored: markdown, text
+          github_token: ${{ secrets.STATS_TOKEN }}
+          visualization_types: "pie"
+          output_path: "stats"
+          dark_mode: "true"
 
       - name: Fix Docker Root Permissions Bug
         run: |
@@ -45,5 +33,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@://github.com"
           git add stats/
-          git commit -m "Update language statistics custom branding" || exit 0
+          git commit -m "Update language statistics cake diagram" || exit 0
           git push
