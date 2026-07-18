@@ -22,27 +22,6 @@ jobs:
           visualization_types: "pie"
           output_path: "stats"
           dark_mode: "true"
-
-      - name: Fix Docker Root Permissions Bug
-        run: |
-          sudo chown -R $USER:$USER .git
-          sudo chmod -R 777 .git
-
-      # THIS FORCES THE TERM SYSTEM TO SWAP OUT THE GREY SHADES NATIVELY
-      - name: Hardcode Mojo Orange and Astro Purple
-        run: |
-          if [ -d "stats" ]; then
-            # Search through the tool's generated files and replace fallback greys with your colors
-            sed -i 's/#cccccc/#ff5d01/g' stats/* 2>/dev/null || true
-            sed -i 's/#b0b0b0/#bc52ee/g' stats/* 2>/dev/null || true
-            sed -i 's/#bbbbbb/#bc52ee/g' stats/* 2>/dev/null || true
-            sed -i 's/gray/#ff5d01/g' stats/* 2>/dev/null || true
-          fi
-
-      - name: Commit and push generated images
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add stats/
           git commit -m "Update language statistics custom branding" || exit 0
           git push
