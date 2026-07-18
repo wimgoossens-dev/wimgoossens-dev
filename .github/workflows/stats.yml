@@ -22,6 +22,3 @@ jobs:
           visualization_types: "pie"
           output_path: "stats"
           dark_mode: "true"
-          git add stats/
-          git commit -m "Update language statistics custom branding" || exit 0
-          git push
