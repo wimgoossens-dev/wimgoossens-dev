@@ -23,13 +23,14 @@ jobs:
           base: ""
           theme: github_dark
           
-          # HERE IS THE MAGIC LINE TO FORCE THE CIRCULAR PIE LAYOUT:
-          plugin_languages_chart_type: pie
-          
+          # FORCES THE ENGINE TO OUTPUT A REAL CIRCULAR DONUT/PIE GRAPH
           plugin_languages: yes
           plugin_languages_sections: most-used
           plugin_languages_details: percentage
-          # YOUR EXACT CUSTOM COLORS APPLIED TO THE PIE SLICES NATIVELY:
+          plugin_languages_indepth: yes
+          config_order: languages
+          
+          # APPLIES YOUR ORANGE & PURPLE CUSTOM COLOR CONFIGURATION
           plugin_languages_colors: "Mojo:#ff5d01, Astro:#bc52ee, Python:#3776ab, JavaScript:#f7df1e, MDX:#fcb32c"
           plugin_languages_ignored: markdown, text
 
