@@ -20,14 +20,16 @@ jobs:
         with:
           token: ${{ secrets.STATS_TOKEN }}
           filename: stats/pie_by_weighted.svg
-          base: ""
+          
+          # RE-ENABLE THE BASE ENGINE TO ACTIVATE DESIGN WRAPPERS
+          base: header
           theme: github_dark
           
-          # FORCES THE CODE TO DRAW A TRUE CIRCULAR DIAGRAM
+          # FORCES THE SYSTEM TO FORCE-OUTPUT A REAL CIRCULAR DIAGRAM
           plugin_languages: yes
           plugin_languages_chart_type: donut
           plugin_languages_sections: most-used
-          plugin_languages_details: percentage
+          plugin_languages_details: percentage, pie-chart
           
           # APPLIES YOUR SPECIFIC DESIGNED COLOR SCHEME NATIVELY
           plugin_languages_colors: "Mojo:#ff5d01, Astro:#bc52ee, Python:#3776ab, JavaScript:#f7df1e, MDX:#fcb32c"
@@ -41,7 +43,7 @@ jobs:
       - name: Commit and push generated images
         run: |
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.email "github-actions[bot]@://github.com"
           git add stats/
           git commit -m "Update language statistics custom branding" || exit 0
           git push
