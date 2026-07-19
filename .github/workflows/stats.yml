@@ -15,11 +15,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         
-      - name: Configure Global Language Override
-        run: |
-          git config --global core.attributesfile "~/.gitattributes"
-          echo "*.el linguist-language=Elisp" > ~/.gitattributes
-
       - name: Run language metrics tool
         uses: wimgoossens-dev/Github-Language-Stats@main
         with:
