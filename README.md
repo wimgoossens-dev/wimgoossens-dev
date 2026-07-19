@@ -1,4 +1,4 @@
-### Hello 👋 <img src="stats/pie_by_lines.png" width="444" align="right" alt="My Language Pie Chart" />
+### Hello 👋 <img src="stats/leaderboard_by_lines.png" width="444" align="right" alt="My Language Leaderboard" />
 
 Welcome, and take a look around. Everything here is released under the MIT license, so feel free to copy anything you like. On the right, you'll find a pie chart of my most-used programming languages and an overview of my technical stack.
   
