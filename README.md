@@ -1,4 +1,4 @@
-### Hello 👋 ![My Language Stats](stats/bar_by_lines_dark.png)
+### Hello 👋 ![My Language Stats](stats/bar_by_lines.png) { width=300px align=right }
 
 Welcome, and take a look around. Everything here is released under the MIT license, so feel free to copy anything you like. On the right, you'll find a pie chart of my most-used programming languages and an overview of my technical stack.
   
