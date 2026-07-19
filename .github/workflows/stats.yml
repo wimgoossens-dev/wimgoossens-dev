@@ -25,6 +25,9 @@ jobs:
           render_legend: "true"
           dark_mode: "true"
           exclude_languages: "Astro,Markdown,Text,JSON,YAML"
+      - name: Rename Emacs Lisp to Elisp in Data Output
+        run: |
+          sed -i 's/"Emacs Lisp"/"Elisp"/g' stats/languages.json 2>/dev/__null || sed -i 's/"Emacs Lisp"/"Elisp"/g' stats/data.json 2>/dev/__null || true
       
       - name: Fix Docker Root Permissions Bug
         run: |
