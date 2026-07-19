@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run language metrics tool
-        uses: ./
+        uses: wimgoossens-dev/Github-Language-Stats@main
         with:
           github_token: ${{ secrets.STATS_TOKEN }}
           visualization_types: "pie"
