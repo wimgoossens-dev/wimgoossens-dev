@@ -16,9 +16,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run language metrics tool
-        uses: StefVuck/Github-Language-Stats@v1.2.0
+        uses: ./
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.STATS_TOKEN }}
           visualization_types: "pie"
           output_path: "stats"
           dark_mode: "true"
