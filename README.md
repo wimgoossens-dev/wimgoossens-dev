@@ -1,4 +1,7 @@
-### Hello 👋 ![My Language Stats](stats/bar_by_lines.png){ width=300px align=right }
+### Hello 👋
+<div style="margin-top: 40px;">
+  <img src="stats/bar_by_lines.png" style="width: 420px; height: 333px; margin-left: 30px;" align="right" hspace="35" alt="My Language Stats" />
+</div>
 
 Welcome, and take a look around. Everything here is released under the MIT license, so feel free to copy anything you like. On the right, you'll find a pie chart of my most-used programming languages and an overview of my technical stack.
   
