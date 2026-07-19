@@ -24,7 +24,7 @@ jobs:
           use_loc: "true"
           render_legend: "true"
           dark_mode: "true"
-          exclude_languages: "Astro,Md,Text,JSON,YAML"
+          exclude_languages: "Astro,Markdown,Text,JSON,YAML"
       
       - name: Fix Docker Root Permissions Bug
         run: |
